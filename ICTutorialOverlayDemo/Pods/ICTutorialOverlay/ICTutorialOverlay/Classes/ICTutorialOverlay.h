@@ -28,6 +28,8 @@ typedef enum {
 
 @interface ICTutorialOverlay : UIView
 
+@property (nonatomic, strong) NSMutableArray *holes;
+
 @property (nonatomic) BOOL animated;
 @property (nonatomic) BOOL hideWhenTapped;
 @property (nonatomic, copy) void(^willShowCallback)();
@@ -38,6 +40,8 @@ typedef enum {
 
 - (ICTutorialOverlayHole*)addHoleWithRect:(CGRect)rect form:(ICTutorialOverlayHoleForm)form transparentEvent:(BOOL)transparentEvent;
 - (ICTutorialOverlayHole*)addHoleWithView:(UIView*)view padding:(CGFloat)padding offset:(CGSize)offset form:(ICTutorialOverlayHoleForm)form transparentEvent:(BOOL)transparentEvent;
+
+- (CGSize)calculatePaddingSizeWithRect:(CGRect)rect defaultPadding:(CGFloat)defaultPadding form:(ICTutorialOverlayHoleForm)form;
 
 - (void)show;
 - (void)hide;

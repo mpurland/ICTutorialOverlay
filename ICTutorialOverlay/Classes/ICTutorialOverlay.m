@@ -61,7 +61,6 @@
 
 @interface ICTutorialOverlay ()
 {
-    NSMutableArray *holes;
 }
 @end
 
@@ -75,7 +74,7 @@ static ICTutorialOverlay *showingOverlay;
 
 - (void)initialize
 {
-    holes = [NSMutableArray array];
+    self.holes = [NSMutableArray array];
     self.opaque = NO;
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
     self.hideWhenTapped = NO;
@@ -106,7 +105,7 @@ static ICTutorialOverlay *showingOverlay;
     hole.rect = rect;
     hole.form = form;
     hole.transparentEvent = transparentEvent;
-    [holes addObject:hole];
+    [self.holes addObject:hole];
     return hole;
 }
 
@@ -173,7 +172,7 @@ static ICTutorialOverlay *showingOverlay;
     CGContextSetFillColorWithColor(context, self.backgroundColor.CGColor);
     CGContextFillRect(context, rect);
     
-    for (ICTutorialOverlayHole *hole in holes) {
+    for (ICTutorialOverlayHole *hole in self.holes) {
         if(! CGRectIsEmpty(CGRectIntersection(hole.rect, rect))) {
             UIBezierPath *path = [hole bezierPath];
             if (path) {
@@ -268,7 +267,7 @@ static ICTutorialOverlay *showingOverlay;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
 
-    for (ICTutorialOverlayHole *hole in holes) {
+    for (ICTutorialOverlayHole *hole in self.holes) {
         if (! hole.transparentEvent) {
             continue;
         }

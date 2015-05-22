@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/i110/ICTutorialOverlay"
   s.license 	 = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Ichito Nagata" => "i.nagata110@gmail.com" }
-  s.source       = { :git => "https://github.com/i110/ICTutorialOverlay.git", :tag => "0.0.6" }
+  s.source       = { :git => "https://github.com/i110/ICTutorialOverlay.git", :tag => s.version.to_s }
   s.platform     = :ios, '5.1'
   s.source_files = 'ICTutorialOverlay/**/*.{h,m}'
   # s.resources    = "ICTutorialOverlay/Resources/*"
